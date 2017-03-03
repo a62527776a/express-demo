@@ -1,4 +1,4 @@
-import BaseService from '../services/base.service';
+import BaseService from '../services/base.service'
 
 class BaseCtrl {
   find (req, res) {

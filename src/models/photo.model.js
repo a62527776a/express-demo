@@ -2,8 +2,7 @@ import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
-const CommentSchema = new Schema({
-    nickname: String,
+const PhotoSchema = new Schema({
     content: String,
     createTime: {
         type: Date,
@@ -11,4 +10,4 @@ const CommentSchema = new Schema({
     }
 })
 
-export default CommentSchema
+export default PhotoSchema

@@ -1,12 +1,9 @@
-var gulp = require('gulp'),
-    concat = require('gulp-concat'),
-    rename = require('gulp-rename'),
-    jshint = require('gulp-jshint'),
-    uglify = require('gulp-uglify');
-  
+var gulp = require('gulp');
+var eslint = require('gulp-eslint');
 var $ = require('gulp-load-plugins')();
+var runSequence = require('run-sequence');
 
-gulp.task('es6', function() {  
+gulp.task('es6', function () {  
   return gulp.src('src/**/*.js')
     .pipe($.plumber())
     .pipe($.babel({
@@ -15,6 +12,16 @@ gulp.task('es6', function() {
     .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('watch', ['es6'], function() {
-  gulp.watch(['src/**/*.js'], ['es6']);
+gulp.task('lint',function (){
+  return gulp.src(['src/**/*.js'])
+    .pipe(eslint({configFle:"./.eslintrc"}))
+    .pipe(eslint.format())
 });
+
+gulp.task('watch', ['es6'], function () {
+  gulp.watch(['src/**/*.js'], ['es6', 'lint']);
+});
+
+gulp.task('dev', function () {
+  runSequence('es6', 'lint', 'watch')
+})
