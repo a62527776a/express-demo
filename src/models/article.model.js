@@ -10,6 +10,6 @@ const ArticleSchema = new Schema({
         type: Date,
         default: Date.now()
     }
-})
+});
 
-export default ArticleSchema
+export default ArticleSchema;

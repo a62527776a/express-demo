@@ -9,6 +9,6 @@ const UserSchema = new Schema({
         type: Date,
         default: Date.now()
     }
-})
+});
 
-export default UserSchema
+export default UserSchema;

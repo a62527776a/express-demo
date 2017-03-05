@@ -8,6 +8,6 @@ const PhotoSchema = new Schema({
         type: Date,
         default: Date.now()
     }
-})
+});
 
-export default PhotoSchema
+export default PhotoSchema;

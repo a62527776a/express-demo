@@ -1,22 +1,20 @@
-import express from 'express'
-import bodyParser from 'body-parser'
-import path from 'path'
-import init_session from './middleware/session'
-import routes from './modules/routes/base.router'
-let app = express()
+import express from 'express';
+import bodyParser from 'body-parser';
+
+import initSession from './middleware/session';
+import routes from './modules/routes/base.router';
+import initHttps from './middleware/https';
+
+let app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-init_session(app);
+initSession(app);
 routes(app);
 
-const PORT = 5000;
-
 const start = () => {
-  app.listen(PORT, () => {
-    console.log('server start on ' + PORT)
-  })
-}
+  initHttps(app);
+};
 
-exports.start = start
+exports.start = start;

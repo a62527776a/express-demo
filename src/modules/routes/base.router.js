@@ -1,4 +1,4 @@
-import Base from '../controllers/base.controller'
+import Base from '../controllers/base.controller';
 
 let routes = (app) => {
   app.route('/api/:className').get(Base.find);
@@ -6,6 +6,6 @@ let routes = (app) => {
   app.route('/api/:className/:id').get(Base.get);
   app.route('/api/:className/:id').put(Base.put);
   app.route('/api/:className/:id').delete(Base.delete);
-}
+};
 
-export default routes
+export default routes;

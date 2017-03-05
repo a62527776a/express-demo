@@ -9,6 +9,6 @@ const CommentSchema = new Schema({
         type: Date,
         default: Date.now()
     }
-})
+});
 
-export default CommentSchema
+export default CommentSchema;

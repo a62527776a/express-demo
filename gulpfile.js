@@ -21,7 +21,3 @@ gulp.task('lint',function (){
 gulp.task('watch', ['es6'], function () {
   gulp.watch(['src/**/*.js'], ['es6', 'lint']);
 });
-
-gulp.task('dev', function () {
-  runSequence('es6', 'lint', 'watch')
-})
