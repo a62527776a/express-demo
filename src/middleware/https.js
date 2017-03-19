@@ -7,7 +7,7 @@ const httpsOptions = {
   cert: fs.readFileSync(path.join(__dirname, '../../static/https/https.crt.crt'))
 };
 
-const PORT = 8080;
+const PORT = 5000;
 
 const initHttps = (app) => {
   const server = https.createServer(httpsOptions, app);

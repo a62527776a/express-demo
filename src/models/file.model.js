@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
-const PhotoSchema = new Schema({
+const FileSchema = new Schema({
     content: String,
     createTime: {
         type: Date,
@@ -10,4 +10,4 @@ const PhotoSchema = new Schema({
     }
 });
 
-export default PhotoSchema;
+export default FileSchema;

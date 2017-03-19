@@ -1,20 +1,18 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-
-import initSession from './middleware/session';
 import routes from './modules/routes/base.router';
-import initHttps from './middleware/https';
+import middleware from './middleware/';
 
 let app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-initSession(app);
+middleware.initSession(app);
 routes(app);
 
 const start = () => {
-  initHttps(app);
+  middleware.initHttps(app);
 };
 
 exports.start = start;

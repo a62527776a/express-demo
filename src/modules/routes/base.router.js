@@ -1,4 +1,5 @@
 import Base from '../controllers/base.controller';
+import path from 'path';
 
 let routes = (app) => {
   app.route('/api/:className').get(Base.find);
@@ -6,6 +7,7 @@ let routes = (app) => {
   app.route('/api/:className/:id').get(Base.get);
   app.route('/api/:className/:id').put(Base.put);
   app.route('/api/:className/:id').delete(Base.delete);
+  app.route('/api/file/upload').post(Base.fileUpload);
 };
 
 export default routes;

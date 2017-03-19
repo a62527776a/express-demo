@@ -5,7 +5,7 @@ import express from 'express';
 mongoose.Promise = require('bluebird');
 
 let initSession = (app) => {
-    mongoose.connect('mongodb://localhost:27017/local');
+    mongoose.connect('mongodb://localhost:27017');
     mongoose.connection.on('error', console.error.bind(console, '连接数据库失败'));
     app.use(session({
         key: 'session',

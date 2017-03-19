@@ -1,3 +1,3 @@
-let start = require('./dist/app')
+let start = require('./dist/app');
 
 start.start()

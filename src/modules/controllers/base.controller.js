@@ -16,6 +16,9 @@ class BaseCtrl {
   delete (req, res) {
     new BaseService(req.params.className).delete(req.params.id, res);
   };
+  fileUpload (req, res) {
+    new BaseService('file').fileUpload(req, res);
+  };
 };
 
 export default new BaseCtrl();

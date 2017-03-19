@@ -1,5 +1,8 @@
 import model from '../../models/index';
-
+import middleware from '../../middleware/';
+import fs from 'fs';
+import path from 'path';
+import querystring from 'querystring';
 export default class BaseService {
   constructor(className) {
     this._model;
@@ -54,4 +57,23 @@ export default class BaseService {
     });
   };
 
+  fileUpload (req, res) {
+    req.setEncoding('binary');
+    let chunks = new Array;
+    console.log(typeof chunks);
+    // boundary 在传输的数据中也在请求头中
+    let boundary = req.headers['content-type'].split('; ')[1].replace('boundary=', '');
+    let body = '';
+    req.on('data', (chunk) => {
+      chunks.push(chunk);
+    });
+    req.on('end', () => {
+      let chunks = Buffer.concat(chunks);
+      middleware.writeFile(buffer, boundary).then((result) => {
+        console.log(result);
+      }).catch((err) => {
+        console.log(err);
+      });
+    });
+  };
 };
