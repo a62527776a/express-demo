@@ -17,6 +17,7 @@ class BaseCtrl {
     new BaseService(req.params.className).delete(req.params.id, res);
   };
   fileUpload (req, res) {
+    req.setEncoding('binary');
     new BaseService('file').fileUpload(req, res);
   };
 };

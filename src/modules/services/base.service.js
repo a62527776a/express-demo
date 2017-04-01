@@ -11,7 +11,7 @@ export default class BaseService {
 
   setModel(className) {
     if (!model[className]) {
-      throw new Error('模块名错误' + className);
+      // throw new Error('模块名错误' + className);
     }
     this._model = model[className];
   };
@@ -58,21 +58,18 @@ export default class BaseService {
   };
 
   fileUpload (req, res) {
-    req.setEncoding('binary');
-    let chunks = new Array;
-    console.log(typeof chunks);
+    req.setEncoding('binary'); 
     // boundary 在传输的数据中也在请求头中
-    let boundary = req.headers['content-type'].split('; ')[1].replace('boundary=', '');
     let body = '';
+    let boundary = req.headers['content-type'].split('; ')[1].replace('boundary=', '');
     req.on('data', (chunk) => {
-      chunks.push(chunk);
+      body += chunk;
     });
     req.on('end', () => {
-      let chunks = Buffer.concat(chunks);
-      middleware.writeFile(buffer, boundary).then((result) => {
-        console.log(result);
+      middleware.writeFile(body, boundary).then((result) => {
+        res.send(result);
       }).catch((err) => {
-        console.log(err);
+        res.send(err);
       });
     });
   };
