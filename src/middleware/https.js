@@ -14,12 +14,10 @@ const TCPPORT = 8124;
 
 const initHttps = (app) => {
   const server = https.createServer(httpsOptions, app);
-  const tcpServer = net.createServer((c) => {
-    c.on('end', () => {
-      console.log('client disconnected');
-    });
-    c.write('111');
-    c.pipe(c);
+  const tcpServer = net.createServer((socket) => {
+    socket.on('data', (data) => {
+      // /Sec\-WebSocket\-Key:\s(.+)\r\n/
+    })
   });
   tcpServer.listen();
   server.listen(PORT, () => {
