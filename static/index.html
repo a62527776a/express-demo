@@ -7,7 +7,7 @@
 <canvas id="myCanvas" height="500" width="500"></canvas>
 <canvas id="compass" height="500" width="500"></canvas>
 <script>
-  let ws = new WebSocket('ws://localhost: 8124')
+  let ws = new WebSocket('wss://192.168.10.50:8124')
   let video = document.querySelector('video')
   let canvas = document.getElementById('myCanvas')
   let ctx=canvas.getContext('2d');
